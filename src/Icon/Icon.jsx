@@ -4,6 +4,7 @@ import cx from 'classnames';
 
 import AddNewOrganisationIcon from './svg/add-new-organisation.svg';
 import Archive from './svg/archive.svg';
+import Unarchive from './svg/unarchive.svg';
 import ArrowIcon from './svg/arrow.svg';
 import ArrowRightIcon from './svg/arrow-right.svg';
 import Billable from './svg/billable.svg';
@@ -104,6 +105,7 @@ const
         stop: <StopIcon />,
         share: <ShareIcon />,
         type: <TypeIcon />,
+        unarchive: <Unarchive />,
         plus: <PlusIcon />,
         photoUploadBlue: <PhotoUploadBlue />,
         personFilter: <PersonFilter />,

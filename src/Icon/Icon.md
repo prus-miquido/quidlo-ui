@@ -58,5 +58,6 @@ Available icons:
     <Icon icon="archive" />
     <Icon icon="reports" />
     <Icon icon="reports-action" />
+    <Icon icon="unarchive" >
 </div>
 ```
