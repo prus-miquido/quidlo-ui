@@ -1,0 +1,55 @@
+@import "../../styles/variables";
+
+.menuItem {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid rgba($color-white, 0.1);
+  text-decoration: none;
+
+  .icon {
+    width: 20px;
+    height: 20px;
+    margin-bottom: 15px;
+  }
+
+  .title {
+    color: $color-grey-dark;
+    font-family: $font-soleil-light;
+    transition: color 0.2s linear;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  &::after {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    content: '';
+    width: 3px;
+    background: $color-blue;
+    transform: translateX(-3px);
+    transition: transform $transition-time $transition-easing;
+  }
+
+  &.active {
+    .title {
+      color: $color-white;
+    }
+
+    &::after {
+      transform: translateX(0);
+    }
+  }
+
+  &:hover {
+    .title {
+      color: $color-white;
+    }
+  }
+}

@@ -1,0 +1,57 @@
+@import "../styles/variables";
+@import "../styles/mixins";
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+  padding: 10px 0;
+  margin-bottom: 20px;
+  height: 45px;
+
+  .title {
+    @extend .font-fix;
+  }
+
+  .left {
+    color: $color-grey-dark;
+    display: flex;
+    align-items: center;
+
+    .icon {
+      display: inline-flex;
+      align-items: center;
+      transform: scale(1.5);
+      transform-origin: 0 50%;
+      margin-right: 30px;
+    }
+  }
+
+  &.inline {
+    margin-bottom: 0;
+  }
+
+  &.size {
+    &-small {
+      .left {
+        font-size: 1.6rem;
+      }
+    }
+
+    &-normal {
+      .left {
+        font-size: 2rem;
+      }
+    }
+
+    &-large {
+      border-bottom: 1px solid $color-ecru;
+
+      .left {
+        font-size: 2.6rem;
+      }
+    }
+  }
+}

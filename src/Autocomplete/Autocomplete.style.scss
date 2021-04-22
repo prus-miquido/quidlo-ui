@@ -1,0 +1,322 @@
+@import "../styles/mixins";
+@import "../styles/variables";
+
+/* stylelint-disable */
+
+.autocomplete {
+  display: flex;
+  position: relative;
+  outline: none;
+  width: 100%;
+
+  .input {
+    position: relative;
+    font-family: $font-soleil;
+    font-size: 1.2rem;
+    line-height: 1.2rem;
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 1px solid $color-ecru;
+    background-color: transparent !important;
+
+    label {
+      color: $color-grey;
+      font-size: 1.2rem;
+      font-family: $font-soleil-light;
+      position: absolute;
+      pointer-events: none;
+      left: 0;
+      top: 7px;
+      transition: all $transition-time $transition-easing;
+      transform: scale(1) translate(0, 0);
+      transform-origin: left top 0;
+
+      &:focus { outline: none; }
+    }
+
+    .hint {
+      position: absolute;
+      display: block;
+      opacity: 1;
+      left: 0;
+      transition: opacity $transition-time $transition-easing 0ms;
+      top: 8px;
+      color: $color-grey;
+      font-size: 1.2rem;
+      line-height: 1rem;
+      font-family: $font-soleil-light;
+      pointer-events: none;
+    }
+
+    .bar {
+      position: absolute;
+      bottom: 0;
+      display: block;
+      width: 100%;
+    }
+
+    .bar::before,
+    .bar::after {
+      content: '';
+      height: 2px;
+      width: 0;
+      bottom: 1px;
+      position: absolute;
+      background: $color-blue;
+      transition: transform $transition-time $transition-easing;
+      transform: scaleX(0);
+    }
+
+    .bar::before {
+      position: absolute;
+      top: -1px;
+      left: 0;
+      width: 100%;
+    }
+
+    .bar::after {
+      display: none;
+      right: 50%;
+    }
+
+    .errormessage {
+      color: $color-red;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      margin-top: 10px;
+      font-size: 1rem;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: all $transition-time $transition-easing;
+    }
+
+    input {
+      position: relative;
+      font-size: 1.2rem;
+      color: $color-blue;
+      font-family: $font-soleil-bold;
+      border: none;
+      background-color: transparent !important;
+      width: 100%;
+      opacity: 0;
+      line-height: 2.3rem;
+    }
+
+    .text {
+      opacity: 1;
+      position: absolute;
+      width: 100%;
+      top: 6%;
+      pointer-events: none;
+      color: $color-blue;
+      font-family: $font-soleil-bold;
+      font-size: 1.2rem;
+      line-height: 1.2rem;
+      padding: 5px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    &.filled {
+      label {
+        left: 0 !important;
+        transform: scale(0.8) translate(0, -28px);
+      }
+
+      .hint {
+        display: none !important;
+        opacity: 0 !important;
+      }
+    }
+
+    input:focus {
+      outline: none;
+
+      ~ label {
+        left: 0 !important;
+        transform: scale(0.8) translate(0, -28px);
+      }
+
+      ~ .hint {
+        display: block;
+        opacity: 1;
+        left: 0;
+      }
+
+      ~ .bar::before,
+      ~ .bar::after {
+        transform: scaleX(1);
+      }
+    }
+
+    &.error {
+      .errormessage {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    &.inputActive {
+      input {
+        opacity: 1;
+      }
+
+      .text {
+        opacity: 0;
+      }
+    }
+  }
+
+  .optionsContainer {
+    position: absolute;
+    display: block;
+    top: 100%;
+    left: 0;
+    margin-top: 1px;
+    border-radius: 0 0 6px 6px;
+    background-color: $color-white;
+    box-shadow: 18px 20px 23px 0 $shadow-black-3;
+    border-top: solid 1px rgba(225, 227, 232, 0.5);
+    border-bottom: solid 1px rgba(225, 227, 232, 0.5);
+    z-index: 1000;
+    max-height: 300px;
+    min-width: 200px;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    @extend .scroll;
+
+    &[class*=' anim-enter'] {
+      opacity: 0;
+    }
+
+    &[class*=' anim-enter-active'] {
+      opacity: 1;
+      transition: opacity 0.2s $transition-easing 0s;
+    }
+
+    &[class*=' anim-enter-done'] {
+      opacity: 1;
+      transition: opacity 0.2s $transition-easing 0s;
+    }
+
+    &[class*=' anim-exit'] {
+      opacity: 1;
+    }
+
+    &[class*=' anim-exit-active'] {
+      opacity: 0;
+      transition: opacity 0.2s $transition-easing 0s;
+    }
+
+    .options {
+      max-height: 227px;
+      overflow-y: auto;
+    }
+
+    .checkbox, .noOptionsContainer {
+      display: flex;
+      font-family: $font-soleil;
+      align-items: stretch;
+      justify-content: center;
+      line-height: 1.2rem;
+      color: $color-grey-dark;
+
+      label {
+        flex: 1;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        cursor: pointer;
+        padding-left: 30px;
+      }
+
+      .checkboxInput {
+        position: absolute;
+        margin-left: -9999px;
+        visibility: hidden;
+      }
+
+      .check {
+        position: absolute;
+        left: 20px;
+        outline: none;
+        width: 13px;
+        height: 13px;
+        display: flex;
+        align-self: center;
+        justify-content: center;
+        pointer-events: none;
+        transition: border-color $transition-time $transition-easing;
+
+        svg {
+          align-self: center;
+          transform: scale(0);
+          transition: transform $transition-time $transition-easing;
+        }
+
+        &:hover {
+          border: solid 1px $color-blue;
+        }
+      }
+
+      &.dropdown {
+        @extend .dropdown-list;
+      }
+
+      &.dropdownAll {
+        @extend .dropdown-list;
+
+        border-bottom: solid 1px $color-blue-even-more-lighter !important;
+      }
+
+      &.checked {
+        .check {
+          svg {
+            transform: scale(1);
+          }
+        }
+      }
+
+      &.active {
+        background-color: $color-blue-lighter;
+      }
+    }
+
+    &.selectAll {
+      align-items: center;
+      justify-content: right;
+    }
+
+    .noOptions {
+      flex: 1;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      color: $color-grey-light;
+    }
+
+    .showAll {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-right: solid 1px rgba(225, 227, 232, 0.5);
+      border-left: solid 1px rgba(225, 227, 232, 0.5);
+    }
+  }
+
+  .notActive {
+    display: none;
+  }
+
+  &.disabled {
+    pointer-events: none;
+
+    input {
+      color: $color-grey;
+    }
+  }
+}

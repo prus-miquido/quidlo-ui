@@ -1,0 +1,197 @@
+@import "../styles/variables";
+@import "../styles/mixins";
+
+.select {
+  background-color: transparent;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  font-size: 1.2rem;
+  line-height: 1.2rem;
+  font-family: $font-soleil;
+  position: relative;
+  color: $color-blue;
+
+  .selectField {
+    position: relative;
+    border-bottom: solid 1px $color-ecru;
+    padding: 5px 0;
+
+    .selectedView {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+
+      .label {
+        color: $color-grey;
+        font-size: 1.2rem;
+        font-family: $font-soleil-light;
+        position: absolute;
+        pointer-events: none;
+        left: 0;
+        top: 8px;
+        transition: all $transition-time $transition-easing;
+        transform: scale(1) translate(0, 0);
+        transform-origin: left top 0;
+
+        &.hide {
+          transform: scale(0.8) translate(0, -28px);
+        }
+      }
+
+      .errormessage {
+        color: $color-red;
+        position: absolute;
+        top: 100%;
+        margin-top: 10px;
+        font-size: 1rem;
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: all $transition-time $transition-easing;
+      }
+
+      .value {
+        color: $color-blue;
+        font-family: $font-soleil-bold;
+        font-weight: bold;
+        flex: 1;
+        min-width: 0;
+
+        > .content {
+          overflow: hidden;
+        }
+      }
+
+      svg {
+        padding-bottom: 3px;
+      }
+
+      &.error {
+        .value {
+          color: $color-red;
+        }
+
+        .errormessage {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      &.narrow {
+        .errormessage {
+          margin-top: 2px;
+        }
+      }
+    }
+
+    &::after {
+      content: '';
+      height: 2px;
+      width: 100%;
+      bottom: -2px;
+      position: absolute;
+      background: $color-blue;
+      transition: transform $transition-time $transition-easing;
+      transform-origin: 50% 50%;
+      transform: scaleX(0);
+    }
+
+    &.active {
+      &::after {
+        transform: scaleX(1);
+      }
+
+      .label {
+        transform: scale(0.8) translate(0, -28px);
+      }
+    }
+  }
+
+  .optionsContainer {
+    position: absolute;
+    display: block;
+    top: 100%;
+    margin-top: 1px;
+    border-radius: 0 0 6px 6px;
+    background-color: $color-white;
+    box-shadow: 18px 20px 23px 0 $shadow-black-3;
+    border-top: solid 1px rgba(225, 227, 232, 0.5);
+    border-bottom: solid 1px rgba(225, 227, 232, 0.5);
+    z-index: 99;
+    max-height: 300px;
+    min-width: 200px;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    @extend .scroll;
+
+    &[class*=' anim-enter'] {
+      opacity: 0;
+    }
+
+    &[class*=' anim-enter-active'] {
+      opacity: 1;
+      transition: opacity 0.2s $transition-easing 0s;
+    }
+
+    &[class*=' anim-enter-done'] {
+      opacity: 1;
+    }
+
+    &[class*=' anim-exit'] {
+      opacity: 1;
+    }
+
+    &[class*=' anim-exit-active'] {
+      opacity: 0;
+      transition: opacity 0.2s $transition-easing 0s;
+    }
+
+    .options {
+      max-height: 227px;
+      overflow-y: auto;
+    }
+
+    .searchField {
+      @extend .dropdown-list;
+
+      @include box-shadow($shadow-blur-sm, $shadow-black-4);
+
+      border: none;
+      display: flex;
+      align-items: center;
+
+      > div {
+        height: 35px;
+
+        > input {
+          color: $color-grey-dark;
+          caret-color: $color-blue;
+          font-weight: normal;
+        }
+      }
+    }
+
+    .noOptionsContainer {
+      display: flex;
+      font-family: $font-soleil;
+      align-items: stretch;
+      justify-content: center;
+      line-height: 1.2rem;
+
+      @extend .dropdown-list;
+
+      .noOptions {
+        flex: 1;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        color: $color-grey-light;
+      }
+    }
+  }
+}
+
+.notActive {
+  display: none;
+}

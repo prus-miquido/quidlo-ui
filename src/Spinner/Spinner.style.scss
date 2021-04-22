@@ -1,0 +1,46 @@
+@import "../styles/variables";
+@import "../styles/mixins";
+
+.dataSpinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+
+  &[class*=' anim-enter'] {
+    opacity: 0;
+  }
+
+  &[class*=' anim-enter-active'] {
+    opacity: 1;
+    transition: opacity 0.2s $transition-easing;
+  }
+
+  &[class*=' anim-enter-done'] {
+    opacity: 1;
+  }
+
+  &[class*=' anim-exit'] {
+    opacity: 1;
+  }
+
+  &[class*=' anim-exit-active'] {
+    opacity: 0;
+    transition: opacity 0.2s $transition-easing 0s;
+  }
+
+  img {
+    width: 45px;
+    height: 45px;
+  }
+
+  .text {
+    font-family: $font-soleil-light;
+    color: $color-grey;
+  }
+}
+
+.notActive {
+  display: none;
+}
+

@@ -1,0 +1,74 @@
+@import "../styles/variables";
+@import "../styles/mixins";
+
+.infoCardContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+
+  .infoCard {
+    position: relative;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: $color-white;
+    padding: 105px 40px 40px;
+    border-radius: 6px;
+    color: $color-grey-dark;
+    font-family: $font-soleil-light;
+    font-size: 1.4rem;
+
+    @include box-shadow($shadow-blur-md, $shadow-blue-2);
+
+    .header {
+      font-family: $font-soleil;
+      font-size: 2rem;
+      color: $color-blue;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      line-height: 1.5em;
+    }
+
+    .buttonContainer {
+      margin-top: 30px;
+    }
+
+    .imageContainer {
+      position: absolute;
+      top: -80px;
+
+      svg {
+        :global(.movingY) {
+          animation: movingY 4s linear 0s infinite;
+        }
+      }
+
+      @keyframes movingY {
+        0% { transform: translateY(0); }
+        50% { transform: translateY(10px); }
+        100% { transform: translateY(0); }
+      }
+    }
+  }
+
+  @media only screen and (max-width: $mobile-breakpoint) {
+    .infoCard {
+      max-width: 440px;
+      padding: 65px 15px 30px;
+      line-height: 1.5em;
+      box-sizing: border-box;
+
+      .imageContainer {
+        top: -80px;
+
+        svg {
+          height: 140px;
+        }
+      }
+    }
+  }
+}
+

@@ -1,0 +1,172 @@
+@import "../styles/variables";
+@import "../styles/mixins";
+
+.toast {
+  position: absolute;
+  bottom: 0;
+  height: 40px;
+  margin-bottom: 10px;
+  padding: 0 20px;
+  transition: transform 0.2s $transition-easing 0.2s;
+
+  .content {
+    position: relative;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    padding: 0;
+    font-size: 1.2rem;
+    font-family: $font-soleil-light;
+    transform-origin: 0 0;
+    border-radius: 0 20px 20px 0;
+    padding-right: 20px;
+    z-index: 1;
+
+    & > div {
+      display: flex;
+      align-items: center;
+    }
+
+    span {
+      @extend .font-fix;
+    }
+
+    .action {
+      margin: 0 0 0 10px;
+      padding: 10px;
+      color: $color-blue;
+      cursor: pointer;
+      border-radius: $border-radius;
+      text-transform: uppercase;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.05);
+      }
+    }
+
+    .remove {
+      width: 7px;
+      height: 7px;
+      cursor: pointer;
+      opacity: 0.8;
+      margin: 0 0 3px 10px;
+
+      svg {
+        width: 7px;
+        height: 7px;
+
+        path {
+          fill: $color-grey-dark;
+        }
+      }
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  .start {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+  }
+
+  &.color {
+    &-black {
+      .content {
+        background: $color-black;
+        color: $color-white;
+      }
+
+      .start {
+        background: $color-black;
+      }
+
+      .end {
+        background: $color-black;
+      }
+    }
+
+    &-red {
+      .content {
+        background: $color-black;
+        color: $color-red;
+      }
+
+      .start {
+        background: $color-black;
+      }
+
+      .end {
+        background: $color-black;
+      }
+    }
+  }
+
+  &[class*=' anim-enter'] {
+    opacity: 0;
+
+    .content {
+      transform: scaleX(0);
+
+      > div {
+        opacity: 0;
+      }
+    }
+
+    .start {
+      transform: scale(0);
+    }
+  }
+
+  &[class*=' anim-enter-active'] {
+    opacity: 1;
+    transition: opacity 0.2s $transition-easing 0s;
+
+    .content {
+      transform: scaleX(1);
+      transition: all 0.2s $transition-easing 0.5s;
+
+      > div {
+        opacity: 1;
+        transition: opacity 0.2s $transition-easing 0.8s;
+      }
+    }
+
+    .start {
+      transform: scale(1);
+      transition: transform 0.2s $transition-easing 0.2s;
+    }
+  }
+
+  &[class*=' anim-enter-done'] {
+    opacity: 1;
+
+    .content {
+      transform: scaleX(1);
+
+      > div {
+        opacity: 1;
+      }
+    }
+
+    .start {
+      transform: scale(1);
+    }
+  }
+
+  &[class*=' anim-exit'] {
+    opacity: 1;
+  }
+
+  &[class*=' anim-exit-active'] {
+    opacity: 0;
+    transition: all 0.2s $transition-easing 0s;
+  }
+}

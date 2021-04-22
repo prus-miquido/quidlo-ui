@@ -1,0 +1,32 @@
+.row {
+  display: flex;
+  flex-direction: row;
+  margin: 0 0 20px 0;
+
+  &.spaced {
+    > * {
+      margin-right: 20px;
+    }
+  }
+
+  &.stretched {
+    justify-content: space-between;
+
+    > div {
+      display: flex;
+      align-items: center;
+
+      &:first-child > * {
+        margin-right: 20px;
+      }
+    }
+  }
+
+  &.centered {
+    justify-content: center;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}

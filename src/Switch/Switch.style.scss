@@ -1,0 +1,126 @@
+@import "../styles/variables";
+@import "../styles/mixins";
+
+.switch {
+  font-family: $font-soleil;
+  border-radius: 25px;
+  box-sizing: border-box;
+  outline-style: none;
+  box-shadow: none;
+
+  label {
+    position: relative;
+    display: flex;
+    justify-content: stretch;
+    margin: 0;
+    vertical-align: middle;
+    transition: background 0.4s;
+    cursor: pointer;
+
+    &::after {
+      position: absolute;
+      content: "";
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 50%;
+      border-radius: 20px;
+      transition: transform 0.4s;
+    }
+
+    .option {
+      flex: 1;
+      text-align: center;
+      align-self: center;
+      z-index: 1;
+      transition: color 0.4s;
+    }
+
+    &.right {
+      &::after {
+        transform: translateX(100%);
+      }
+    }
+  }
+
+  &.type {
+    &-large {
+      background-color: $color-white;
+      border: solid 1px $color-grey-lighter;
+      padding: 5px;
+
+      label {
+        min-width: 145px;
+        height: 33px;
+
+        &::after {
+          background-color: $color-grey;
+
+          @include box-shadow($shadow-blur-md, $shadow-black-2);
+        }
+      }
+
+      .option {
+        color: $color-grey;
+
+        &.active {
+          color: $color-white;
+        }
+      }
+
+      &.focused {
+        border: solid 1px $color-blue;
+
+        @include box-shadow($shadow-blur-md, $shadow-blue-2);
+      }
+    }
+
+    &-small {
+      background-color: $color-blue-lighter;
+      border: solid 1px $color-blue-lighter;
+      padding: 3px;
+
+      label {
+        width: 40px;
+        height: 20px;
+
+        &::after {
+          background-color: $color-blue;
+
+          @include box-shadow($shadow-blur-md, $shadow-blue-1);
+        }
+
+        &.left::after {
+          background-color: $color-grey;
+
+          @include box-shadow($shadow-blur-md, $shadow-black-1);
+        }
+      }
+
+      .option {
+        color: $color-grey;
+
+        &.active {
+          color: $color-white;
+        }
+      }
+
+      &.off {
+        background-color: $color-white;
+        border: solid 1px $color-ecru;
+      }
+
+      &.disabled {
+        pointer-events: none;
+        background-color: $color-white;
+        border: solid 1px $color-ecru;
+
+        label::after {
+          background-color: $color-grey;
+
+          @include box-shadow($shadow-blur-md, $shadow-black-1);
+        }
+      }
+    }
+  }
+}

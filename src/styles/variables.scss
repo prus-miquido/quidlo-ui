@@ -1,0 +1,47 @@
+$font-size: 14px;
+
+// common colors
+$color-black: #141c26;
+$color-blue-dark: #3459d6;
+$color-blue: #4c72f4;
+$color-blue-light: #6d8eff;
+$color-blue-lighter: #dae2fd;
+$color-blue-even-more-lighter: #f0f1f3;
+$color-white: #fff;
+$color-white-dark: #f4f6fa;
+$color-grey: #9babaf;
+$color-grey-dark: #556164;
+$color-grey-light: #c9cfcf;
+$color-ecru: #e1e3e8;
+$color-grey-lighter: rgba(225, 227, 232, 0.5);
+$color-red: #fd5a5a;
+$color-red-light: #ffc3c3;
+$color-overlay: rgba(102, 114, 120, 0.66);
+
+// fonts
+$font-soleil: 'Soleil', sans-serif;
+$font-soleil-light: 'Soleil Light', sans-serif;
+$font-soleil-bold: 'Soleil Bold', sans-serif;
+
+// box-shadow variables
+$shadow-blur-sm: 7px;
+$shadow-blur-md: 13px;
+$shadow-blur-lg: 38px;
+
+$shadow-black-1: rgba(0, 0, 0, 0.29);
+$shadow-black-2: rgba(0, 0, 0, 0.15);
+$shadow-black-3: rgba(0, 0, 0, 0.1);
+$shadow-black-4: rgba(0, 0, 0, 0.03);
+$shadow-blue-1: rgba(0, 55, 234, 0.35);
+$shadow-blue-2: rgba(0, 44, 187, 0.07);
+$shadow-color-blue-light: rgba(192, 206, 234, 0.38);
+
+//border-radius
+$border-radius-xl: 22.5px;
+$border-radius: 6px;
+
+//transitions
+$transition-time: 0.2s;
+$transition-easing: cubic-bezier(0.645, 0.045, 0.355, 1);
+
+$mobile-breakpoint: 1100px;

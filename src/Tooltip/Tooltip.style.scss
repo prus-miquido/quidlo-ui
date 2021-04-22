@@ -1,0 +1,66 @@
+@import "../styles/variables";
+@import "../styles/mixins";
+
+.wrapper {
+  display: inline-block;
+}
+
+.tooltip {
+  position: absolute;
+  width: 200px;
+  z-index: 999;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  .content {
+    background: $color-black;
+    max-width: 200px;
+    padding: 10px;
+    color: $color-white;
+    border-radius: $border-radius;
+    text-align: center;
+    font-family: $font-soleil;
+    line-height: 1.5em;
+    word-break: normal;
+
+    @include box-shadow($shadow-blur-md, $shadow-black-2);
+  }
+
+  &::after {
+    position: absolute;
+    width: 0;
+    height: 0;
+    background: transparent;
+    border-top: 10px solid $color-black;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    left: 50%;
+    bottom: 0;
+    margin-left: -10px;
+    margin-bottom: -10px;
+    content: '';
+  }
+
+  &[class*=' anim-enter'] {
+    opacity: 0;
+  }
+
+  &[class*=' anim-enter-active'] {
+    opacity: 1;
+    transition: opacity 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.2s;
+  }
+
+  &[class*=' anim-enter-done'] {
+    opacity: 1;
+  }
+
+  &[class*=' anim-exit'] {
+    opacity: 1;
+  }
+
+  &[class*=' anim-exit-active'] {
+    opacity: 0;
+    transition: opacity 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0s;
+  }
+}

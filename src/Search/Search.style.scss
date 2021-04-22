@@ -1,0 +1,101 @@
+@import "variables";
+
+.search {
+  display: flex;
+  height: 45px;
+  width: 48px;
+  position: relative;
+  outline: none;
+  cursor: pointer;
+
+  .leftPart {
+    background-color: $color-white;
+    border-top: 1px solid $color-grey-lighter;
+    border-bottom: 1px solid $color-grey-lighter;
+    border-left: 1px solid $color-grey-lighter;
+    width: 22.5px;
+    border-radius: 100% / 50%;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    outline: none;
+}
+
+  .rightPart {
+    background-color: $color-white;
+    border-top: 1px solid $color-grey-lighter;
+    border-bottom: 1px solid $color-grey-lighter;
+    border-right: 1px solid $color-grey-lighter;
+    width: 22.5px;
+    border-radius: 100% / 50%;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    outline: none;
+  }
+
+  .centerPart {
+    width: 0;
+    transition: width 300ms ease-out;
+    background-color: $color-white;
+    border-top: 1px solid $color-grey-lighter;
+    border-bottom: 1px solid $color-grey-lighter;
+    outline: none;
+    display: flex;
+
+    .input {
+      border: none;
+      font-family: $font-soleil;
+      font-size: 1.4rem;
+      line-height: 2rem;
+      width: 100%;
+      outline: none;
+      caret-color: $color-grey-dark;
+      color: $color-grey-dark;
+
+      &::placeholder {
+        color: $color-grey;
+      }
+    }
+  }
+
+  .icon {
+    position: absolute;
+    top: 13px;
+    left: 13px;
+    opacity: 1;
+    transition: opacity 0.2s linear;
+  }
+
+  &.active {
+    cursor: auto;
+    width: auto;
+
+    .centerPart {
+      width: 300px;
+    }
+
+    .icon {
+      opacity: 0;
+    }
+  }
+
+  &.focused {
+    width: auto;
+
+    .leftPart {
+      border-top-color: $color-blue;
+      border-bottom-color: $color-blue;
+      border-left-color: $color-blue;
+    }
+
+    .rightPart {
+      border-top-color: $color-blue;
+      border-bottom-color: $color-blue;
+      border-right-color: $color-blue;
+    }
+
+    .centerPart {
+      border-top-color: $color-blue;
+      border-bottom-color: $color-blue;
+    }
+  }
+}

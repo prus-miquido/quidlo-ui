@@ -1,0 +1,48 @@
+@import '../styles/variables';
+@import '../styles/mixins';
+
+.pill {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: 35px;
+  padding: 0 18px;
+  border-radius: 18px;
+  font-family: $font-soleil-bold;
+  font-size: 2rem;
+  box-sizing: border-box;
+  transition: all 0.5s $transition-easing;
+
+  span {
+    @extend .font-fix-2;
+  }
+
+  &.size {
+    &-large {
+      height: 45px;
+      border-radius: 23px;
+      padding: 0 23px;
+      font-size: 2.8rem;
+    }
+
+    &-small {
+      height: 25px;
+      border-radius: 13px;
+      padding: 0 13px;
+      font-size: 1.2rem;
+    }
+  }
+
+  &.color {
+    &-grey {
+      border: 1px solid $color-grey-lighter;
+      color: $color-grey-dark;
+    }
+
+    &-white {
+      border: 1px solid $color-white;
+      background: $color-white;
+      color: $color-blue;
+    }
+  }
+}

@@ -1,0 +1,42 @@
+@import "../styles/variables";
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100px;
+  z-index: 21;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: $color-black;
+  transform: translateY(0);
+  transition: transform $transition-time $transition-easing;
+
+  .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: 100px;
+    background: $color-blue;
+    overflow: hidden;
+
+    svg {
+      width: 24px;
+    }
+  }
+
+  .version {
+    width: 100px;
+    padding: 20px 10px;
+    box-sizing: border-box;
+    text-align: center;
+    color: $color-grey-dark;
+  }
+
+  &.hidden {
+    transform: translateX(-100px);
+  }
+}

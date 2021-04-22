@@ -1,0 +1,218 @@
+@import "../styles/variables";
+
+.input {
+  position: relative;
+  font-family: $font-soleil;
+  line-height: 1rem;
+  width: 100%;
+
+  label {
+    color: $color-grey;
+    font-family: $font-soleil-light;
+    position: absolute;
+    pointer-events: none;
+    left: 0;
+    top: 8px;
+    transition: all $transition-time $transition-easing;
+    transform: scale(1) translate(0, 0);
+    transform-origin: left top 0;
+
+    &:focus { outline: none; }
+  }
+
+  .hint {
+    position: absolute;
+    display: block;
+    opacity: 1;
+    left: 0;
+    transition: opacity $transition-time $transition-easing 0ms;
+    top: 8px;
+    color: $color-grey;
+    font-size: 1.2rem;
+    line-height: 1rem;
+    font-family: $font-soleil-light;
+    pointer-events: none;
+  }
+
+  .bar {
+    position: relative;
+    display: block;
+    width: 100%;
+  }
+
+  .bar::before,
+  .bar::after {
+    content: '';
+    height: 2px;
+    width: 0;
+    bottom: 1px;
+    position: absolute;
+    background: $color-blue;
+    transition: transform $transition-time $transition-easing;
+    transform: scaleX(0);
+  }
+
+  .bar::before {
+    position: absolute;
+    top: -1px;
+    left: 0;
+    width: 100%;
+  }
+
+  .bar::after {
+    display: none;
+    right: 50%;
+  }
+
+  .errormessage {
+    color: $color-red;
+    position: absolute;
+    top: 100%;
+    font-size: 1rem;
+    line-height: 1rem;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all $transition-time $transition-easing;
+  }
+
+  input {
+    font-size: 1.2rem;
+    line-height: 2.2rem;
+    color: $color-blue;
+    font-weight: bold;
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid $color-ecru;
+    background: transparent;
+
+    /* active state */
+    &:focus {
+      outline: none;
+
+      ~ label {
+        left: 0 !important;
+        transform: scale(0.8) translate(0, -28px);
+      }
+
+      ~ .bar::before,
+      ~ .bar::after {
+        transform: scaleX(1);
+      }
+    }
+
+    /* filled state */
+    &.filled {
+      ~ label {
+        left: 0 !important;
+        transform: scale(0.8) translate(0, -28px);
+      }
+
+      ~ .hint {
+        display: none;
+        opacity: 0;
+      }
+    }
+
+    /* input with icon */
+    &.iconInput {
+      padding: 7px 0 7px 30px;
+
+      ~ label {
+        left: 30px;
+      }
+
+      ~ .hint {
+        left: 30px;
+      }
+
+      ~ .error {
+        bottom: 15px;
+        top: auto;
+      }
+    }
+
+    &:-webkit-autofill{
+      background: transparent;
+    }
+
+    &[type="password"] {
+      padding-right: 17px;
+    }
+  }
+
+  .icon {
+    position: relative;
+    bottom: 24px;
+    width: 15px;
+  }
+
+  .showPassword {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    margin-top: -8px;
+    cursor: pointer;
+  }
+
+  &.error {
+    input {
+      color: $color-red;
+    }
+
+    .errormessage {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  &.disabled {
+    pointer-events: none;
+
+    input {
+      color: $color-grey;
+    }
+  }
+
+  &.size {
+    &-small {
+      font-size: 1.2rem;
+
+      .label {
+        font-size: 1.2rem;
+        line-height: 1.2rem;
+      }
+
+      .errormessage {
+        margin-top: 4px;
+      }
+    }
+
+    &-medium {
+      font-size: 1.2rem;
+
+      .label {
+        font-size: 1.2rem;
+        line-height: 1.2rem;
+      }
+
+      .errormessage {
+        margin-top: 10px;
+      }
+    }
+
+    &-large {
+      font-size: 1.2rem;
+
+      .label {
+        font-size: 1.2rem;
+        line-height: 1.2rem;
+      }
+
+      .errormessage {
+        margin-top: 10px;
+      }
+    }
+  }
+}

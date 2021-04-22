@@ -1,0 +1,67 @@
+@import "../styles/variables";
+@import "../styles/mixins";
+
+.radioButton {
+  display: flex;
+  font-family: $font-soleil;
+  align-items: stretch;
+  justify-content: center;
+  line-height: 1.2rem;
+  color: $color-grey-dark;
+
+  label {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+    padding-left: 30px;
+  }
+
+  input[type="radio"] {
+    position: absolute;
+    margin-left: -9999px;
+    visibility: hidden;
+  }
+
+  .radioLabel {
+    position: absolute;
+    left: 20px;
+    outline: none;
+    border: solid 1px $color-ecru;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    align-self: center;
+    pointer-events: none;
+    transition: border-color $transition-time $transition-easing;
+
+    &::after {
+      display: block;
+      position: absolute;
+      content: "";
+      top: 3px;
+      left: 3px;
+      background-color: $color-blue;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      transform: scale(0);
+      transition: transform $transition-time $transition-easing;
+    }
+
+    &:hover {
+      border: solid 1px $color-blue;
+    }
+
+    &.checked {
+      &::after {
+        transform: scale(1);
+      }
+    }
+  }
+
+  &.dropdown {
+    @extend .dropdown-list;
+  }
+}

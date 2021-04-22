@@ -1,0 +1,15 @@
+@import "variables";
+
+.toaster {
+  position: fixed;
+  bottom: 1%;
+  left: 6%;
+  z-index: 100;
+  max-width: 800px;
+  width: 90%;
+  pointer-events: none;
+
+  &.visible {
+    pointer-events: auto;
+  }
+}

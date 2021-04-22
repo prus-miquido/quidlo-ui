@@ -1,0 +1,43 @@
+@import "../styles/variables";
+@import "../styles/mixins";
+
+.label {
+  color: $color-grey;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-family: $font-soleil;
+
+  &.size {
+    &-small {
+      font-size: 1.2rem;
+      margin-right: 5px;
+
+      > div {
+        margin-right: 5px;
+      }
+
+      span {
+        @extend .font-fix;
+      }
+    }
+
+    &-medium {
+      color: $color-grey-dark;
+      font-family: $font-soleil-light;
+      font-size: 1.6rem;
+
+      > div {
+        margin-right: 10px;
+      }
+
+      span {
+        @extend .font-fix;
+      }
+    }
+  }
+
+  &.disabled {
+    color: $color-grey-light;
+  }
+}

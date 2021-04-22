@@ -1,0 +1,63 @@
+@import "../styles/variables";
+
+.icon {
+  display: inline-block;
+
+  g,
+  path {
+    transition: fill $transition-time $transition-easing;
+    fill: var(--color);
+  }
+
+  &.size {
+    &-extra-small {
+      height: 10px;
+      width: 10px;
+
+      svg {
+        height: 10px;
+        width: 10px;
+      }
+    }
+
+    &-small {
+      height: 16px;
+      width: 16px;
+
+      svg {
+        height: 16px;
+        width: 16px;
+      }
+    }
+
+    &-medium {
+      height: 20px;
+      width: 20px;
+
+      svg {
+        height: 20px;
+        width: 20px;
+      }
+    }
+
+    &-semi-large {
+      height: 30px;
+      width: 30px;
+
+      svg {
+        height: 30px;
+        width: 30px;
+      }
+    }
+
+    &-large {
+      height: 38px;
+      width: 38px;
+
+      svg {
+        height: 38px;
+        width: 38px;
+      }
+    }
+  }
+}
