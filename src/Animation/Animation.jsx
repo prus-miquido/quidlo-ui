@@ -6,8 +6,7 @@ import Lottie from 'react-lottie';
 const Animation = ({
     animationData,
     height,
-    width,
-    className
+    width
 }) => {
     const defaultOptions = {
         loop: true,
@@ -36,14 +35,12 @@ Animation.propTypes = {
     /** Height of animation */
     height: PropTypes.number,
     /** Width of animation */
-    width: PropTypes.number,
-    className: PropTypes.string
+    width: PropTypes.number
 };
 
 Animation.defaultProps = {
     height: 50,
-    width: 50,
-    className: ''
+    width: 50
 };
 
 export default Animation;

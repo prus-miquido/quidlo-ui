@@ -265,7 +265,7 @@ class InputContainer extends PureComponent {
             onKeyDown: this.keyDownHandler,
             passwordVisibility: this.state.passwordVisibility,
             showPassword: this.showPassword,
-            className: this.props.className
+            errorStyle: this.props.errorStyle
         };
 
         return (
@@ -309,7 +309,7 @@ InputContainer.propTypes = {
     onDelayedChange: PropTypes.func,
     onKeyDown: PropTypes.func,
     intl: PropTypes.object.isRequired,
-    className: PropTypes.string
+    errorStyle: PropTypes.object
 };
 
 InputContainer.defaultProps = {
@@ -331,7 +331,7 @@ InputContainer.defaultProps = {
     blurOnEnter: false,
     onDelayedChange: undefined,
     onKeyDown: undefined,
-    className: ''
+    errorStyle: {}
 };
 
 export default injectIntl(InputContainer);
