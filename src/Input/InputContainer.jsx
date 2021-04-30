@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
 
@@ -35,8 +35,8 @@ class InputContainer extends PureComponent {
 
     componentDidMount() {
         const
-            {persistent, fieldId} = this.props,
-            {error, value} = this.state,
+            { persistent, fieldId } = this.props,
+            { error, value } = this.state,
             savedValue = db.LSget(fieldId),
             newValue = (persistent && savedValue) ? savedValue : this.props.value;
 
@@ -56,7 +56,7 @@ class InputContainer extends PureComponent {
     }
 
     componentWillReceiveProps(newProps) {
-        if (newProps.value !== this.state.value || JSON.stringify(newProps.validators) !== JSON.stringify(this.props.validators) ) {
+        if (newProps.value !== this.state.value || JSON.stringify(newProps.validators) !== JSON.stringify(this.props.validators)) {
             const error = this.validate(newProps.value);
 
             if (error !== this.props.error) {
@@ -216,7 +216,7 @@ class InputContainer extends PureComponent {
 
     changeHandler(event) {
         const
-            {target: {value}} = event,
+            { target: { value } } = event,
             error = this.validate(value);
 
         if (this.props.onChange) {
@@ -265,6 +265,7 @@ class InputContainer extends PureComponent {
             onKeyDown: this.keyDownHandler,
             passwordVisibility: this.state.passwordVisibility,
             showPassword: this.showPassword,
+            className: this.props.className
         };
 
         return (
@@ -307,7 +308,8 @@ InputContainer.propTypes = {
     /** Input handler function triggered with delay */
     onDelayedChange: PropTypes.func,
     onKeyDown: PropTypes.func,
-    intl: PropTypes.object.isRequired
+    intl: PropTypes.object.isRequired,
+    className: PropTypes.string
 };
 
 InputContainer.defaultProps = {
@@ -329,6 +331,7 @@ InputContainer.defaultProps = {
     blurOnEnter: false,
     onDelayedChange: undefined,
     onKeyDown: undefined,
+    className: ''
 };
 
 export default injectIntl(InputContainer);

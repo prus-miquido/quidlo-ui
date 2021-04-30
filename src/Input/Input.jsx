@@ -22,9 +22,10 @@ const Input = ({
     onBlur,
     onKeyDown,
     onFocus,
-    showPassword
+    showPassword,
+    className
 }) => (
-    <div className={cx(style.input, (error && errorVisibility) && style.error, disabled && style.disabled, style[`size-${size}`])}>
+    <div className={cx(style.input, (error && errorVisibility) && style.error, disabled && style.disabled, style[`size-${size}`], className)}>
         <input
             type={((type === 'time' || passwordVisibility) ? 'text' : type)}
             name={name}
@@ -73,6 +74,7 @@ Input.propTypes = {
     errorVisibility: PropTypes.bool,
     passwordVisibility: PropTypes.bool,
     showPassword: PropTypes.func.isRequired,
+    className: PropTypes.string
 };
 
 Input.defaultProps = {
@@ -86,7 +88,8 @@ Input.defaultProps = {
     disabled: false,
     errorVisibility: false,
     passwordVisibility: false,
-    icon: ''
+    icon: '',
+    className: ''
 };
 
 export default Input;
