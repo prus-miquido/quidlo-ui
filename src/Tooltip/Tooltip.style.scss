@@ -5,6 +5,40 @@
   display: inline-block;
 }
 
+.position-bottom {
+  &::after {
+    position: absolute;
+    width: 0;
+    height: -29px;
+    background: transparent;
+    border-bottom: 10px solid #141c26;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    left: 50%;
+    bottom: 48px;
+    margin-left: -10px;
+    margin-bottom: -10px;
+    content: '';
+  }
+}
+
+.position-top {
+  &::after {
+    position: absolute;
+    width: 0;
+    height: 0;
+    background: transparent;
+    border-top: 10px solid $color-black;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    left: 50%;
+    bottom: 0;
+    margin-left: -10px;
+    margin-bottom: -10px;
+    content: '';
+  }
+}
+
 .tooltip {
   position: absolute;
   width: 200px;
@@ -25,21 +59,6 @@
     word-break: normal;
 
     @include box-shadow($shadow-blur-md, $shadow-black-2);
-  }
-
-  &::after {
-    position: absolute;
-    width: 0;
-    height: 0;
-    background: transparent;
-    border-top: 10px solid $color-black;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    left: 50%;
-    bottom: 0;
-    margin-left: -10px;
-    margin-bottom: -10px;
-    content: '';
   }
 
   &[class*=' anim-enter'] {

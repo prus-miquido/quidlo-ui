@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
@@ -34,7 +34,9 @@ class Tooltip extends PureComponent {
 
         this.setState({
             coordinates: {
-                bottom: `${document.body.clientHeight - ((elInfo.top + window.pageYOffset) - 10)}px`,
+                bottom: this.props.position === 'bottom'
+                    ? `${document.body.clientHeight - ((elInfo.top + window.pageYOffset + elInfo.height) + 10 + 38)}px`
+                    : `${document.body.clientHeight - ((elInfo.top + window.pageYOffset) - 10)}px`,
                 left
             },
             open: !!this.props.text,
@@ -50,8 +52,8 @@ class Tooltip extends PureComponent {
 
     render() {
         const
-            {text, children, position} = this.props,
-            {open, coordinates, width} = this.state;
+            { text, children, position } = this.props,
+            { open, coordinates, width } = this.state;
 
         return (
             <div className={cx(style.wrapper)} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave} ref={el => this.getTooltipRef(el)}>
@@ -75,7 +77,7 @@ class Tooltip extends PureComponent {
                                                 width
                                             }}
                                         >
-                                            <div className={style.content} style={{maxWidth: width}}>
+                                            <div className={style.content} style={{ maxWidth: width }}>
                                                 {text}
                                             </div>
                                         </div>
