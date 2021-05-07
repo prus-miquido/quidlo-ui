@@ -38,7 +38,8 @@ const
         isLoading,
         showAll,
         clickShowAll,
-        intl
+        intl,
+        errorStyle
     }) => {
         let text;
 
@@ -52,7 +53,7 @@ const
             } else if (selectedOptions.length === 1) {
                 text = selectedOptions[0].labelText;
             } else if (selectedOptions.length > 1) {
-                text = intl.formatMessage(messages.selectedNumber, {number: selectedOptions.length});
+                text = intl.formatMessage(messages.selectedNumber, { number: selectedOptions.length });
             } else if (selectedOptions.length === 0) {
                 text = '';
             }
@@ -71,7 +72,7 @@ const
                 <div
                     className={cx(style.input, !!(selectedOptions.length || inputValue) && style.filled, (error && errorVisibility) && style.error, focusedInput && style.inputActive)}
                 >
-                    <input type="hidden" value="something"/>
+                    <input type="hidden" value="something" />
                     <input
                         onFocus={onFocus}
                         type="text"
@@ -88,7 +89,7 @@ const
                     <span className={style.bar} />
                     {label ? <label htmlFor={fieldId}>{label}</label> : null}
                     {placeholder ? <span className={style.hint}>{placeholder}</span> : null}
-                    {errorVisibility && <span className={style.errormessage}>{error}</span>}
+                    {errorVisibility && <span className={style.errormessage} style={errorStyle}>{error}</span>}
                 </div>
                 <TransitionGroup>
                     <CSSTransition
@@ -99,7 +100,7 @@ const
                         unmountOnExit
                     >
                         {focused ? (
-                            <div className={style.optionsContainer} ref={getOptionsContainerRef} style={optionsLength ? {maxHeight: `${56 * optionsLength}px`} : {}}>
+                            <div className={style.optionsContainer} ref={getOptionsContainerRef} style={optionsLength ? { maxHeight: `${56 * optionsLength}px` } : {}}>
                                 {options.length > 0 && onSelectAll && !inputValue &&
                                     <div
                                         className={cx(
@@ -111,7 +112,7 @@ const
                                         )}
                                         id="selectAll"
                                         onClick={() => { onSelectAll(); }}
-                                        onKeyPress={() => {}}
+                                        onKeyPress={() => { }}
                                         ref={ref => { if (activeOption === 'all') getOptionRef(ref); }}
                                     >
                                         <div className={style.check}>
@@ -135,7 +136,7 @@ const
                                                 )}
                                                 id={opt.value}
                                                 onClick={() => { onSelect(opt.value); }}
-                                                onKeyPress={() => {}}
+                                                onKeyPress={() => { }}
                                                 ref={ref => { if (index === activeOption) getOptionRef(ref); }}
                                             >
                                                 <div className={style.check}>
@@ -148,7 +149,7 @@ const
                                         ))}
                                         {(!showAll && options.length > DEFAULT_OPTIONLIST_SIZE) && (
                                             <div className={style.showAll}>
-                                                <Button type="plain" text={intl.formatMessage(messages.showAll, {length: options.length})} onClick={clickShowAll} />
+                                                <Button type="plain" text={intl.formatMessage(messages.showAll, { length: options.length })} onClick={clickShowAll} />
                                             </div>
                                         )}
                                     </div>
@@ -200,7 +201,8 @@ Autocomplete.propTypes = {
     isLoading: PropTypes.bool,
     showAll: PropTypes.bool.isRequired,
     clickShowAll: PropTypes.func.isRequired,
-    intl: PropTypes.object.isRequired
+    intl: PropTypes.object.isRequired,
+    errorStyle: PropTypes.object
 };
 
 Autocomplete.defaultProps = {
@@ -219,7 +221,8 @@ Autocomplete.defaultProps = {
     isMulti: false,
     allSelected: false,
     isLoading: false,
-    optionsLength: undefined
+    optionsLength: undefined,
+    errorStyle: {}
 };
 
 export default Autocomplete;
