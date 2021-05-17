@@ -49,6 +49,9 @@ import PersonFilter from './svg/person-filter.svg';
 import ViewFilter from './svg/view-filter.svg';
 import ChatbotIcon from './svg/chatbot.svg';
 import IntentsIcon from './svg/intents-filter.svg';
+import CopyLink from './svg/copy-link.svg';
+import DownloadFile from './svg/download-file.svg';
+import Mail from './svg/mail.svg';
 
 import style from './Icon.style.scss';
 
@@ -111,7 +114,10 @@ const
         personFilter: <PersonFilter />,
         viewFilter: <ViewFilter />,
         chatbot: <ChatbotIcon />,
-        intents: <IntentsIcon />
+        intents: <IntentsIcon />,
+        copyLink: <CopyLink />,
+        downloadFile: <DownloadFile />,
+        mail: <Mail />
     },
     Icon = ({icon, color, size}) => (
         <div className={cx(style.icon, style[`size-${size}`])} style={{'--color': colors[color] || color}}>

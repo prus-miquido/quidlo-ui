@@ -58,6 +58,9 @@ Available icons:
     <Icon icon="archive" />
     <Icon icon="reports" />
     <Icon icon="reports-action" />
-    <Icon icon="unarchive" >
+    <Icon icon="unarchive" />
+    <Icon icon="copyLink" />
+    <Icon icon="downloadFile" />
+    <Icon icon="mail" />
 </div>
 ```
