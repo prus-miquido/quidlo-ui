@@ -1,8 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-    <g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
-        <g stroke="#9AABAF" stroke-width="1.2">
-            <path d="M14 13H1c-.552 0-1-.448-1-1V1c0-.552.448-1 1-1h13c.552 0 1 .448 1 1v11c0 .552-.448 1-1 1z" transform="translate(-1238 -152) translate(1227 141) translate(11 11) translate(5 6)"/>
-            <path d="M0 1.5L7.5 7.5 15 1.5" transform="translate(-1238 -152) translate(1227 141) translate(11 11) translate(5 6)"/>
-        </g>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="icon-mail">
+        <path d="M18.6,5 C19.4833708,5 20.2,5.71662915 20.2,6.6 L20.2,6.6 L20.2,17.6 C20.2,18.4833708 19.4833708,19.2 18.6,19.2 L18.6,19.2 L5.6,19.2 C4.71662915,19.2 4,18.4833708 4,17.6 L4,17.6 L4,6.6 C4,5.71662915 4.71662915,5 5.6,5 L5.6,5 Z M19,8.347 L12.1,13.8683749 L5.199,8.347 L5.2,17.6 C5.2,17.7930505 5.33733081,17.9545126 5.5194678,17.9918617 L5.6,18 L18.6,18 C18.8206292,18 19,17.8206292 19,17.6 L19,17.6 L19,8.347 Z M18.6,6.2 L5.6,6.2 C5.37937085,6.2 5.2,6.37937085 5.2,6.6 L5.2,6.6 L5.199,6.811 L12.1,12.331 L19,6.811 L19,6.6 C19,6.40694949 18.8626692,6.24548737 18.6805322,6.20813826 L18.6,6.2 Z" id="Path" fill-rule="nonzero"></path>
     </g>
 </svg>
