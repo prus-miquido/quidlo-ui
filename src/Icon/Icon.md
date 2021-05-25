@@ -62,5 +62,6 @@ Available icons:
     <Icon icon="copyLink" />
     <Icon icon="downloadFile" />
     <Icon icon="mail" />
+    <Icon icon="clock" />
 </div>
 ```

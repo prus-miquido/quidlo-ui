@@ -52,6 +52,7 @@ import IntentsIcon from './svg/intents-filter.svg';
 import CopyLink from './svg/copy-link.svg';
 import DownloadFile from './svg/download-file.svg';
 import Mail from './svg/mail.svg';
+import Clock from './svg/clock.svg';
 
 import style from './Icon.style.scss';
 
@@ -117,7 +118,8 @@ const
         intents: <IntentsIcon />,
         copyLink: <CopyLink />,
         downloadFile: <DownloadFile />,
-        mail: <Mail />
+        mail: <Mail />,
+        clock: <Clock />
     },
     Icon = ({icon, color, size}) => (
         <div className={cx(style.icon, style[`size-${size}`])} style={{'--color': colors[color] || color}}>
