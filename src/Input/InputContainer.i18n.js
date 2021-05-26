@@ -36,5 +36,9 @@ export default defineMessages({
     passwordUppercase: {
         id: 'input.error.passwordUppercase',
         defaultMessage: 'Password should contains at least uppercase character'
-    }
+    },
+    hourFormatError: {
+        id: 'input.error.hourFormat',
+        defaultMessage: 'Not valid HH:MM format!'
+    },
 });

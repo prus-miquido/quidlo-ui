@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
 
 import { timeParser } from '../utils/time';
-import { timeValidator } from '../utils/validators';
+import { timeValidator, hourValidator } from '../utils/validators';
 import db from '../utils/db';
 
 import messages from './InputContainer.i18n';
@@ -124,7 +124,8 @@ class InputContainer extends PureComponent {
                 max,
                 isRequired,
                 isPassword,
-                isTime
+                isTime,
+                isHour
             },
             intl
         } = this.props;
@@ -209,6 +210,16 @@ class InputContainer extends PureComponent {
                 }
 
                 return '';
+            case 'hour':
+                if (isRequired && !val.length) {
+                    return isRequired.error || intl.formatMessage(messages.isRequired);
+                }
+
+                if (isHour && !hourValidator(val)) {
+                    return isHour.error || intl.formatMessage(messages.hourFormatError);
+                }
+
+                return '';
             default:
                 return '';
         }
@@ -284,7 +295,7 @@ InputContainer.propTypes = {
     /** Icon string input */
     icon: PropTypes.string,
     /** Input type */
-    type: PropTypes.oneOf(['text', 'number', 'time', 'password']),
+    type: PropTypes.oneOf(['text', 'number', 'time', 'password', 'hour']),
     /** Size of input */
     size: PropTypes.oneOf(['small', 'medium', 'large']),
     /** Input value */
