@@ -133,7 +133,7 @@ Icon.propTypes = {
     /** Color of icon strokes. */
     color: PropTypes.string,
     /** Size of icon. */
-    size: PropTypes.oneOf(['extra-small', 'small', 'medium', 'semi-large', 'large'])
+    size: PropTypes.oneOf(['extra-small', 'small', 'medium', 'medium-plus', 'semi-large', 'large'])
 };
 
 Icon.defaultProps = {
