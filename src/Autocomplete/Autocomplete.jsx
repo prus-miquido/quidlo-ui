@@ -39,7 +39,8 @@ const
         showAll,
         clickShowAll,
         intl,
-        errorStyle
+        errorStyle,
+        selectedChips
     }) => {
         let text;
 
@@ -67,6 +68,28 @@ const
 
         const optionsToRender = (options.length > DEFAULT_OPTIONLIST_SIZE && showAll ? options : options.slice(0, DEFAULT_OPTIONLIST_SIZE));
 
+        const renderSelectedAsChips = (opts) => {
+            if (!opts || opts.length === 0) return [];
+
+            if (opts.length === 1 || (opts.length === 2 && opts[0].labelText.length <= 9 && opts[1].labelText.length <= 9)) {
+                return opts.map(o => <div className={style.chip}>{o.labelText}<div className={style.deleteTag} onClick={() => onSelect(o.value)}></div></div>);
+            }
+
+            if (opts[0].labelText.length <= 7 && opts[1].labelText.length <= 7) {
+                const temp = opts.map(o => <div className={style.chip}>{o.labelText}<div className={style.deleteTag} onClick={() => onSelect(o.value)}></div></div>);
+                const chips = temp.slice(0, 2);
+                const tooltipText = opts.map(o => o.labelText);
+                chips.push(<Tooltip text={tooltipText.slice(2, tooltipText.length).join(', ')}><div className={style.chip, style.count}>{`+${opts.length - 2}`}</div></Tooltip>);
+                return chips;
+            }
+
+            const temp = opts.map(o => <div className={style.chip}>{o.labelText}<div className={style.deleteTag} onClick={() => onSelect(o.value)}></div></div>);
+            const chips = temp.slice(0, 1);
+            const tooltipText = opts.map(o => o.labelText);
+            chips.push(<Tooltip text={tooltipText.slice(2, tooltipText.length).join(', ')}><div className={style.chip, style.count}>{`+${opts.length - 1}`}</div></Tooltip>);
+            return chips;
+        };
+
         return (
             <div className={cx(style.autocomplete, disabled && style.disabled)} ref={getDropdownMenuRef}>
                 <div
@@ -81,11 +104,17 @@ const
                         onChange={e => { onInput(e.target.value); }}
                         autoComplete="new-password"
                     />
-                    <div className={style.text}>
-                        <Tooltip text={selectedOptions.length > 1 ? selectedOptions.map(opt => opt.labelText).join(', ') : ''} >
-                            <div>{!isLoading && text}</div>
-                        </Tooltip>
-                    </div>
+                    {selectedChips ?
+                        !focusedInput && <div className={style.selectedChips}>
+                            {!isLoading && renderSelectedAsChips(selectedOptions)}
+                        </div>
+                        :
+                        <div className={style.text}>
+                            <Tooltip text={selectedOptions.length > 1 ? selectedOptions.map(opt => opt.labelText).join(', ') : ''} >
+                                <div>{!isLoading && text}</div>
+                            </Tooltip>
+                        </div>
+                    }
                     <span className={style.bar} />
                     {label ? <label htmlFor={fieldId}>{label}</label> : null}
                     {placeholder ? <span className={style.hint}>{placeholder}</span> : null}
@@ -202,7 +231,8 @@ Autocomplete.propTypes = {
     showAll: PropTypes.bool.isRequired,
     clickShowAll: PropTypes.func.isRequired,
     intl: PropTypes.object.isRequired,
-    errorStyle: PropTypes.object
+    errorStyle: PropTypes.object,
+    selectedChips: PropTypes.bool
 };
 
 Autocomplete.defaultProps = {
@@ -222,7 +252,8 @@ Autocomplete.defaultProps = {
     allSelected: false,
     isLoading: false,
     optionsLength: undefined,
-    errorStyle: {}
+    errorStyle: {},
+    selectedChips: false
 };
 
 export default Autocomplete;

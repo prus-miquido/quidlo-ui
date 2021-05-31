@@ -482,7 +482,9 @@ class AutocompleteContainer extends PureComponent {
             getDropdownMenuRef: this.getDropdownMenuRef,
 
             intl: this.props.intl,
-            errorStyle: this.props.errorStyle
+            errorStyle: this.props.errorStyle,
+
+            selectedChips: this.props.selectedChips
         };
 
         return (
@@ -532,7 +534,8 @@ AutocompleteContainer.propTypes = {
     isLoading: PropTypes.bool,
     intl: PropTypes.object.isRequired,
     errorStyle: PropTypes.object,
-    errorStyle: {}
+    errorStyle: {},
+    selectedChips: PropTypes.bool
 };
 
 AutocompleteContainer.defaultProps = {
@@ -555,7 +558,8 @@ AutocompleteContainer.defaultProps = {
     onFocus: undefined,
     onBlur: undefined,
     isLoading: false,
-    optionsLength: undefined
+    optionsLength: undefined,
+    selectedChips: false
 };
 
 export default injectIntl(AutocompleteContainer);

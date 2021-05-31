@@ -120,6 +120,68 @@
       white-space: nowrap;
     }
 
+    .selectedChips {
+      opacity: 1;
+      position: absolute;
+      width: fit-content;
+      max-width: 80%;
+      top: 6%;
+      // pointer-events: none;
+      color: $color-blue;
+      font-family: $font-soleil-light;
+      font-size: 1.2rem;
+      line-height: 1.2rem;
+      // padding: 5px 0;
+      overflow: hidden;
+      white-space: nowrap;
+      display: flex;
+      flex-direction: row;
+
+      .chip {
+        border-radius: 12.5px;
+        background-color: #e7ecfc;
+        padding: 4px 16px 4px 8px;
+        width: fit-content;
+        margin-right: 4px;
+        position: relative;
+        max-width: inherit;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+
+        .deleteTag {
+          height: 5px;
+          width: 5px;
+          position: absolute;
+          right: 10px;
+          top: 6px;
+        }
+
+        .deleteTag:before, .deleteTag:after{
+          position: absolute;
+          left: 5px;
+          content: ' ';
+          height: 7px;
+          width: 1px;
+          background-color: $color-blue;
+        }
+
+        .deleteTag:before {
+          transform: rotate(45deg);
+        }
+
+        .deleteTag:after {
+          transform: rotate(-45deg);
+        }
+      }
+
+      .count {
+        padding: 4px 8px 4px 8px;
+        border-radius: 12.5px;
+        background-color: #e7ecfc;
+      }
+    }
+
     &.filled {
       label {
         left: 0 !important;
