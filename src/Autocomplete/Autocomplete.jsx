@@ -86,7 +86,7 @@ const
             const temp = opts.map(o => <Tooltip text={o.labelText}><div className={style.chip}>{o.labelText}<div className={style.deleteTag} onClick={() => onSelect(o.value)}></div></div></Tooltip>);
             const chips = temp.slice(0, 1);
             const tooltipText = opts.map(o => o.labelText);
-            chips.push(<Tooltip text={tooltipText.slice(2, tooltipText.length).join(', ')}><div className={style.chip, style.count}>{`+${opts.length - 1}`}</div></Tooltip>);
+            chips.push(<Tooltip text={tooltipText.slice(1, tooltipText.length).join(', ')}><div className={style.chip, style.count}>{`+${opts.length - 1}`}</div></Tooltip>);
             return chips;
         };
 
